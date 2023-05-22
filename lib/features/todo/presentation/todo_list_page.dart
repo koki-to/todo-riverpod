@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_riverpod/configs/theme_selector_provider.dart';
 import 'package:todo_riverpod/features/todo/application/todo_service.dart';
 import 'package:todo_riverpod/features/todo/data/todo.dart';
 
@@ -13,6 +14,10 @@ class TodoListPage extends ConsumerWidget {
     // ref.watchで、初期値が空のリストを呼び出して、監視する。
     final todoList = ref.watch(todoProvider);
 
+    final themeSelector = ref.watch(themeSelectorProvider.notifier);
+
+    final currentTheme = ref.watch(themeSelectorProvider);
+
     final bodyController = TextEditingController();
 
     // ランダムな数値を作り出す変数
@@ -23,6 +28,16 @@ class TodoListPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Notes App'),
+        leading: IconButton(
+          icon: const Icon(Icons.change_circle),
+          onPressed: () {
+            if (currentTheme == ThemeMode.light) {
+              themeSelector.changeAndSave(ThemeMode.dark);
+            } else {
+              themeSelector.changeAndSave(ThemeMode.light);
+            }
+          },
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
