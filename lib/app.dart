@@ -14,7 +14,7 @@ class MyApp extends ConsumerWidget {
         primaryColor: Colors.amber,
       ),
       darkTheme: ThemeData.dark().copyWith(
-        primaryColor: Colors.blue,
+        primaryColor: Colors.yellow,
       ),
       themeMode: ref.watch(themeSelectorProvider),
       home: const TodoListPage(),
