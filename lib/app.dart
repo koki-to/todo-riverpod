@@ -11,7 +11,7 @@ class MyApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData.light().copyWith(
-        primaryColor: Colors.amber,
+        primaryColor: Colors.purple,
       ),
       darkTheme: ThemeData.dark().copyWith(
         primaryColor: Colors.orange,
